@@ -1,16 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.curswork.numericalcalculator.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="514.0" minWidth="840.0" prefHeight="514.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.curswork.numericalcalculator.PrimaryController">
+   <left>
+      <VBox alignment="CENTER" maxWidth="303.0" minWidth="282.0" prefHeight="400.0" prefWidth="282.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="282.0">
+               <children>
+                  <Label text="f(x)=">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="expression" promptText="x^3-sin(x)-3/4" />
+                  <Button fx:id="helpButton" mnemonicParsing="false" onAction="#showHelp" prefHeight="26.0" prefWidth="29.0" text="?">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="282.0">
+               <children>
+                  <Label text="Интервал: [">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="leftBorder" prefHeight="26.0" prefWidth="61.0" promptText="-10" />
+                  <Label text=";">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="rightBorder" prefWidth="61.0" promptText="10" />
+                  <Label text="]">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="282.0">
+               <children>
+                  <Label text="Точность ξ =">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="accuraty" prefHeight="26.0" prefWidth="86.0" promptText="0.00001" />
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="52.0" prefWidth="252.0" text="Метод решения нелинейных уравнений:" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="68.0" prefWidth="282.0">
+               <children>
+                  <HBox prefHeight="34.0" prefWidth="282.0">
+                     <children>
+                        <RadioButton fx:id="chordRad" mnemonicParsing="false" onAction="#setChordMethod" selected="true" text="Метод хорд">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="usingMethod" />
+                           </toggleGroup>
+                           <HBox.margin>
+                              <Insets left="55.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="21.0" prefWidth="282.0">
+                     <children>
+                        <RadioButton fx:id="dichotomyRad" mnemonicParsing="false" onAction="#setDichotomyMethod" text="Метод дихотомии" toggleGroup="$usingMethod">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="55.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </VBox>
+            <Button fx:id="decideBut" mnemonicParsing="false" onAction="#decideExpression" prefHeight="31.0" prefWidth="170.0" text="Решить">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <LineChart fx:id="functionGraph" prefHeight="400.0" prefWidth="478.0" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+   </center>
+</BorderPane>
