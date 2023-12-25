@@ -16,7 +16,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="514.0" minWidth="840.0" prefHeight="514.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.curswork.numericalcalculator.PrimaryController">
    <left>
-      <VBox alignment="CENTER" maxWidth="303.0" minWidth="282.0" prefHeight="400.0" prefWidth="282.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxWidth="255.0" minWidth="255.0" prefHeight="514.0" prefWidth="255.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="282.0">
                <children>
@@ -71,7 +71,7 @@
                         <Font size="16.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -119,13 +119,82 @@
       </VBox>
    </left>
    <center>
-      <LineChart fx:id="functionGraph" prefHeight="400.0" prefWidth="478.0" BorderPane.alignment="CENTER">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <LineChart fx:id="functionGraph" prefHeight="586.0" prefWidth="585.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <VBox fx:id="decideRes" alignment="CENTER" prefHeight="59.0" prefWidth="585.0" visible="false">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="f(">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="leftBorderVal" text="leftBorder">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text=") = ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="leftNum" text="leftNum">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="; f(">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rightBorderVal" text="rightBorder">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text=") = ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rightNum" text="rightNum">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="18.0" prefWidth="585.0">
+                     <children>
+                        <Label text="x = ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="filedForX" text="valX">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </center>
 </BorderPane>
