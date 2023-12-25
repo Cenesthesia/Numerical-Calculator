@@ -116,10 +116,13 @@
                </font>
             </Button>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="23.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <LineChart fx:id="functionGraph" prefHeight="586.0" prefWidth="585.0">
               <xAxis>
@@ -129,9 +132,9 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </LineChart>
-            <VBox fx:id="decideRes" alignment="CENTER" prefHeight="59.0" prefWidth="585.0" visible="false">
+            <VBox fx:id="decideRes" alignment="CENTER" maxHeight="59.0" minHeight="59.0" prefHeight="59.0" prefWidth="585.0" visible="false">
                <children>
-                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="TOP_CENTER" maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="200.0">
                      <children>
                         <Label text="f(">
                            <font>
@@ -174,8 +177,11 @@
                            </font>
                         </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="7.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="18.0" prefWidth="585.0">
+                  <HBox alignment="TOP_CENTER" maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="585.0">
                      <children>
                         <Label text="x = ">
                            <font>
