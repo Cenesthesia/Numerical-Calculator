@@ -7,7 +7,7 @@ public interface ExpressionParserI {
 
 	 public String getExpression();
 
-	 public void setExpression(String expression);
+	 public void setExpression(String expression) throws ArithmeticException;
 	 
 	 public  List<String> getTokens();
 	 

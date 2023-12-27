@@ -23,7 +23,13 @@ public class EquationParser implements ExpressionParserI, DefineTokenI {
     return this.expression;
   }
   
-  public void setExpression(String expression) {
+  public void setExpression(String expression) throws ArithmeticException {
+	if (expression.isEmpty() || expression == null)
+		throw new ArithmeticException("Вычисляемое значение не может быть пустым. Установите "
+				+ "корректное значение уравнения.");
+	if (expression.length() > 100)
+		throw new ArithmeticException("Уравнение не может содержать больше 100 символов. Установите "
+				+ "корректное значение уравнения.");
     this.expression = expression;
     this.tokens = null;
   }

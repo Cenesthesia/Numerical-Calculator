@@ -178,6 +178,7 @@ public class EquationPerformer implements ExpressionPerformerI, ParserAPII {
   }
   
   private double clc(Stack<String> post) {
+	int count = 0;
     List<String> expressionReversed = post;
     Stack<String> expressionStack = new Stack<>();
     Stack<String> operationStack = new Stack<>();
@@ -203,7 +204,12 @@ public class EquationPerformer implements ExpressionPerformerI, ParserAPII {
         String function = expressionStack.pop();
         String result = functionOperation(function, operand);
         operationStack.push(result);
-      } 
+      }
+      count++;
+      if (count >= 200) {
+    	  Collections.reverse(expressionReversed);
+    	  throw new ArithmeticException("Невозможно вычислить выражение. В уравнении допущена ошибка.");
+      }
     } 
     Collections.reverse(expressionReversed);
     return Double.parseDouble(operationStack.peek());
@@ -236,7 +242,7 @@ public class EquationPerformer implements ExpressionPerformerI, ParserAPII {
   private Stack<String> valuesSubstitutePostfix() throws ArithmeticException {
     Stack<String> resultList = new Stack<>();
     if (this.postfixExpression == null || this.postfixExpression.isEmpty())
-      throw new ArithmeticException("The list of tokens for the new equation has not been calculated. Tokens are null."); 
+      throw new ArithmeticException("Список лексем пуст. Невозможно перевести в постфиксную форму."); 
     for (String str : this.postfixExpression)
       resultList.add(this.VALUES.getOrDefault(str, str)); 
     return resultList;
@@ -260,7 +266,7 @@ public class EquationPerformer implements ExpressionPerformerI, ParserAPII {
           result = Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand);
           break;
         } 
-        throw new ArithmeticException("Division by zero error.");
+        throw new ArithmeticException("Ошибка деления на ноль.");
       case "*":
         result = Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand);
         break;
@@ -294,6 +300,6 @@ public class EquationPerformer implements ExpressionPerformerI, ParserAPII {
       case "ln":
         return String.valueOf(Math.log(Double.parseDouble(operand)));
     } 
-    throw new ArithmeticException("A non-existent function was called.");
+    throw new ArithmeticException("Невозможно обработать одну из функций уравнения.");
   }
 }
